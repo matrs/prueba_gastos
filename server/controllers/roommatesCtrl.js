@@ -3,9 +3,7 @@
 const fs = require("fs");
 const { generarRoommate, guardarRoommate } = require("../modules/roommates");
 
-const usersFile = "/home/mibu/Documents/roommates/roommates.json";
-
-// const usersFile = "./data/roommates.json";
+const usersFile = "../roommates.json";
 
 const roommatePost = async (req, res) => {
   try {

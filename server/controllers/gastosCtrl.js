@@ -5,10 +5,10 @@ const { v4: uuidv4 } = require("uuid");
 const { parseResult, readData } = require("../modules/utilities");
 const mailer = require("../modules/mailer");
 
-const usersFile = "/home/mibu/Documents/roommates/roommates.json";
-const gastosFile = "/home/mibu/Documents/roommates/gastos.json";
-// const usersFile = "./data/roommates.json";
-// const gastosFile = "./data/gastos.json";
+// For some reason, when using paths inside the server folder, I got a random fetch error:
+// net::ERR_CONNECTION_REFUSED.  Still works, but those errors frequently appear.
+const usersFile = "../roommates.json";
+const gastosFile = "../gastos.json";
 
 const getGastos = (req, res) => {
   const gastos = JSON.parse(fs.readFileSync(gastosFile, "utf8"));
@@ -95,7 +95,6 @@ const deleteGasto = (req, res) => {
   try {
     const { roommates, gastos } = readData(usersFile, gastosFile);
     const { id } = req.query;
-    console.log("id and req.body", id, req.body);
     let roommate = "";
     let oldGasto = 0;
     let oldMonto = 0;
